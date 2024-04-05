@@ -33,10 +33,10 @@ Future<Map> getDataCotacao() async{
 
 class _HomeState extends State<Home> {
   double _dolarRealController = 0;
-  double _bitconRealController = 0;
+  double _bitcoinRealController = 0;
   double _euroRealController = 0;
 
-  double dolar = 0, euro = 0, bitcon = 0;
+  double dolar = 0, euro = 0, bitcoin = 0;
   
   void _dolarChange(String text){
     double dolar = double.parse(text);
@@ -48,9 +48,9 @@ class _HomeState extends State<Home> {
     _euroRealController = (euro * this.euro).toStringAsFixed(2) as double;
   }
 
-  void _bitconChange(String text){
-    double bitcon= double.parse(text);
-    _bitconRealController = (bitcon * this.bitcon).toStringAsFixed(2) as double;
+  void _bitcoinChange(String text){
+    double bitcoin = double.parse(text);
+    _bitcoinRealController = (bitcoin * this.bitcoin).toStringAsFixed(2) as double;
   }
 
   @override
@@ -64,65 +64,99 @@ class _HomeState extends State<Home> {
         centerTitle: true,
       ),
 
-      body: Stack(
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Column(
-                children: <Widget>[
-                  const Text(
-                      "Dólar ",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+      body: FutureBuilder<Map>(
+        future: getDataCotacao(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.active:
+            case ConnectionState.waiting:
+              return const Center(
+                child: Text(
+                  "Carregando os dados...",
+                  style: TextStyle(color: Colors.blue, fontSize: 20.0),
+                  textAlign: TextAlign.center,
+                )
+              );
+            default:
+              if(snapshot.hasError) {
+                return const Center(
+                  child: Text(
+                    "Erro ao carregar dados...",
                   ),
+                );
+              } else {
+                dolar = snapshot.data!["results"]["currencies"]["USD"]["buy"];
+                euro = snapshot.data!["results"]["currencies"]["EUR"]["buy"];
+                bitcoin = snapshot.data!["results"]["currencies"]["BTC"]["buy"];
 
-                  Text(
-                      "$_dolarRealController",
-                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
+                return Stack(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Column(
+                          children: <Widget>[
+                            const Text(
+                                "Dólar ",
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
 
-                  ElevatedButton(
-                    child: const Text(
-                      "Calculadora",
-                      style: TextStyle(color: Colors.blue),
-                    ), onPressed: () {
-                      //chama a tela da calculadora que converte moedas
-                    },
-                  )
-                ],
-              ),
+                            Text(
+                                "US\$ $_dolarRealController",
+                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
 
-              Column(
-                children: <Widget>[
-                  const Text(
-                      "Euro ",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
+                            ElevatedButton(
+                              child: const Text(
+                                "Calculadora",
+                                style: TextStyle(color: Colors.blue),
+                              ), onPressed: () {
+                                //chama a tela da calculadora que converte moedas
+                              },
+                            )
+                          ],
+                        ),
 
-                  Text(
-                      "$_euroRealController",
-                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
+                        Column(
+                          children: <Widget>[
+                            const Text(
+                                "Euro ",
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
 
-                  const Text(
-                      "Bitcon ",
-                      style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
+                            Text(
+                                "$_euroRealController",
+                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
 
-                  Text(
-                      "$_bitconRealController",
-                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ), 
-            ]  
-          ),
-          
-        ]
+                            const Text(
+                                "Bitcoin ",
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
+
+                            Text(
+                                "$_bitcoinRealController",
+                                style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ), 
+                      ]  
+                    ),
+                    
+                  ]
+                );
+              }
+          }
+        }
       ),
-
     );
   }
 
-  
+  Widget buildTextForm(String label, String prefix, Function f){
+    return Text(
+      f(dolar),
+    );
+  }
+
 }
