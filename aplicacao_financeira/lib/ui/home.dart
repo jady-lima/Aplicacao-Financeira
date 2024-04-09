@@ -6,17 +6,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'convert.dart';
 
-//chave: 6d110d67
-/*
-    Cotação de ações na IBOVESPA;
-    Fundos imobiliários;
-    Preço de BDRs;
-    API para obter dividendos;
-    Lista das maiores altas e baixas no IBOVESPA;
-    * Logotipo das empresas listadas;
-    * Taxa SELIC e CDI;
-*/
-
 const requestCotacao = "https://api.hgbrasil.com/finance?key=6d110d67";
 
 class Home extends StatefulWidget{
