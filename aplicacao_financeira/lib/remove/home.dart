@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
-import 'convert.dart';
+import '../pages/convert/convert.dart';
 
 const requestCotacao = "https://api.hgbrasil.com/finance?key=6d110d67";
 
 class Home extends StatefulWidget{
+  const Home({super.key});
+
   @override
   State<StatefulWidget> createState() => _HomeState();
 }
