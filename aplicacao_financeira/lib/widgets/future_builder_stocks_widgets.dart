@@ -1,4 +1,5 @@
 import 'package:aplicacao_financeira/models/stock.dart';
+import 'package:aplicacao_financeira/widgets/titles_widgets.dart';
 import 'package:flutter/material.dart';
 
 class FutureBuilderStock{
@@ -21,7 +22,19 @@ class FutureBuilderStock{
           final cac = stock.getByStockName('CAC');
           final nikkei = stock.getByStockName('NIKKEI');
 
-          return Text("tudo ok!");
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: <Widget>[
+                TitlesWidgets.buildStocksTitles(ibovespa),
+                TitlesWidgets.buildStocksTitles(ifix),
+                TitlesWidgets.buildStocksTitles(nasdaq),
+                TitlesWidgets.buildStocksTitles(dowjones),
+                TitlesWidgets.buildStocksTitles(cac),
+                TitlesWidgets.buildStocksTitles(nikkei),
+              ]
+            )
+          );
         }
       }
     );

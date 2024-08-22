@@ -52,11 +52,11 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
 
-          Titles.buildTitles("Real hoje"),
+          TitlesWidgets.buildTitles("Real hoje"),
 
           FutureBuilderCurrency.buildFutureBuilderCurrency(futureCurrency),
 
-          Titles.buildTitles("Bolsas de valores"),
+          TitlesWidgets.buildTitles("Bolsas de valores"),
 
           FutureBuilderStock.buildFutureBuilderCurrency(futureStock),
         ],
