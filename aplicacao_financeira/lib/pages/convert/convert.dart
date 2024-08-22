@@ -1,3 +1,4 @@
+import 'package:aplicacao_financeira/widgets/text_form_field_widgets.dart';
 import 'package:flutter/material.dart';
 
 class Convert extends StatefulWidget{
@@ -96,36 +97,20 @@ class _ConvertState extends State<Convert>{
       ),
 
       body: SingleChildScrollView(
-         padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                buildTextFormField("Reais", "R\$ ", realController, _realChange),
-                const Divider(),
-                buildTextFormField("Dólar", "US\$ ", dolarController, _dolarChange),
-                const Divider(),
-                buildTextFormField("Euro", "EUR ", euroController, _euroChange),
-                const Divider(),
-                buildTextFormField("Bitcoin", "BTC ", bitcoinController, _bitcoinChange),
-              ],
-          ),
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextFormFieldWidgets.buildTextFormField("Reais", "R\$ ", realController, _realChange),
+            const Divider(),
+            TextFormFieldWidgets.buildTextFormField("Dólar", "US\$ ", dolarController, _dolarChange),
+            const Divider(),
+            TextFormFieldWidgets.buildTextFormField("Euro", "EUR ", euroController, _euroChange),
+            const Divider(),
+            TextFormFieldWidgets.buildTextFormField("Bitcoin", "BTC ", bitcoinController, _bitcoinChange),
+          ],
         ),
-    );
-  }
-
-  Widget buildTextFormField(String label, String prefix, TextEditingController controller, Function(String) onChanged) {
-    return TextField(
-      onChanged: onChanged,
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Color.fromARGB(255, 64, 80, 107)),
-        border: const OutlineInputBorder(),
-        prefixText: prefix,
       ),
-      style: const TextStyle(color: Color.fromARGB(255, 62, 93, 109), fontSize: 25.0),
-      keyboardType: const TextInputType.numberWithOptions(decimal: true),
     );
   }
-
 }

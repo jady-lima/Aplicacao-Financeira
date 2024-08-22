@@ -1,6 +1,6 @@
 import 'package:aplicacao_financeira/models/currency.dart';
 import 'package:aplicacao_financeira/pages/convert/convert.dart';
-import 'package:aplicacao_financeira/widgets/text_form_utils.dart';
+import 'package:aplicacao_financeira/widgets/text_form_widgets.dart';
 import 'package:flutter/material.dart';
 
 class FutureBuilderCurrency{

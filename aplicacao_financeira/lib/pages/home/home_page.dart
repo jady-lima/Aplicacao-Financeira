@@ -2,9 +2,9 @@ import 'package:aplicacao_financeira/models/currency.dart';
 import 'package:aplicacao_financeira/models/currency_details.dart';
 import 'package:aplicacao_financeira/models/stock.dart';
 import 'package:aplicacao_financeira/services/finance_services.dart';
-import 'package:aplicacao_financeira/widgets/future_builder_currency.dart';
-import 'package:aplicacao_financeira/widgets/future_builder_stock.dart';
-import 'package:aplicacao_financeira/widgets/titles_utils.dart';
+import 'package:aplicacao_financeira/widgets/future_builder_currency_widget.dart';
+import 'package:aplicacao_financeira/widgets/future_builder_stocks_widgets.dart';
+import 'package:aplicacao_financeira/widgets/titles_widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget{
