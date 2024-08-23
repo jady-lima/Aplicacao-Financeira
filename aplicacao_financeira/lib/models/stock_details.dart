@@ -16,7 +16,7 @@ class StockDetails {
       name: json['name'] as String, 
       location: json['location'] as String, 
       points: json['points']?.toDouble(), 
-      variation: json['points']?.toDouble()
+      variation: json['variation']?.toDouble()
     );
   }
 

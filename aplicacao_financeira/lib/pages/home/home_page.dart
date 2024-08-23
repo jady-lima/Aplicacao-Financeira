@@ -45,20 +45,20 @@ class _HomePageState extends State<HomePage> {
           "Aplicação Financeira",
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: const Color.fromARGB(255, 69, 142, 201),
+        backgroundColor: const Color.fromARGB(179, 21, 57, 101),
         centerTitle: true,
       ),
 
       body: ListView(
         children: <Widget>[
 
-          TitlesWidgets.buildTitles("Real hoje"),
+          TitlesWidgets.buildTitles("Cotação do real"),
 
           FutureBuilderCurrency.buildFutureBuilderCurrency(futureCurrency),
 
           TitlesWidgets.buildTitles("Bolsas de valores"),
 
-          FutureBuilderStock.buildFutureBuilderCurrency(futureStock),
+          FutureBuilderStock.buildFutureBuilderStocks(futureStock),
         ],
       ),
     );

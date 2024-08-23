@@ -7,7 +7,9 @@ void main() {
       title: "Currency App",
       home: const HomePage(),
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 10, 21, 138)), 
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(179, 21, 57, 101)
+        ), 
         useMaterial3: true,
       ),
     )

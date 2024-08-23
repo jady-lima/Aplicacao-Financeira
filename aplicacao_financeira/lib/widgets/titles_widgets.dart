@@ -12,7 +12,7 @@ class TitlesWidgets {
           style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 69, 142, 201),
+            color: Color.fromARGB(179, 21, 57, 101),
           ),
         ),
       ),
@@ -20,42 +20,64 @@ class TitlesWidgets {
   }
 
   static Widget buildStocksTitles(StockDetails? stock){
-    return Center(
-      child: ListTile(
-        contentPadding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
-        shape: RoundedRectangleBorder(
-          side: const BorderSide(
-            color: Colors.black38, 
-            width: 2.0
-          ),
-          borderRadius: BorderRadius.circular(5.0),
-        ),
+    return  Center(
+      child: Container(
+        margin: const EdgeInsets.all(5.0),
+        child: ListTile(
+          contentPadding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
 
-        leading: Container(
-          padding: const EdgeInsets.only(top: 5.0, bottom: 5.0),
-          width: 150.0,
-          child: Text(
-            stock?.name ?? "Carregando dados",
-            style: GoogleFonts.roboto(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w800,
-              color: const Color.fromARGB(255, 16, 102, 146),
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              color: Colors.black38, 
+              width: 2.0
             ),
-            softWrap: true,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
+            borderRadius: BorderRadius.circular(5.0),
           ),
-        ),
 
-        trailing: Container(
-          padding: const EdgeInsets.only(left: 160.0, top: 5.0, bottom: 5.0),
-          child: Text(
-            "R\$${stock?.points ?? "Carregando dados"}",
-            style: GoogleFonts.roboto(
-              fontSize: 14.0,
-              fontWeight: FontWeight.w800,
-              color: const Color.fromARGB(255, 0, 0, 0),
+          leading: SizedBox(
+            width: 150.0,
+            child: Text(
+              stock?.name ?? "Carregando dados",
+              style: GoogleFonts.roboto(
+                fontSize: 14.0,
+                fontWeight: FontWeight.w800,
+                color: const Color.fromARGB(179, 21, 57, 101),
+              ),
+              softWrap: true,
+              maxLines: 3,
+              overflow: TextOverflow.clip,
             ),
+          ),
+
+          trailing: Container(
+            padding: const EdgeInsets.only(left: 160.0, top: 5.0, bottom: 5.0),
+            width: 260,
+            alignment: Alignment.centerRight,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: <Widget>[
+                Text(
+                  "${stock?.variation ?? "Carregando dados"}",
+                  style: GoogleFonts.roboto(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w800,
+                    color: stock != null
+                      ? (stock.variation! > 0 ? const Color.fromARGB(198, 53, 150, 57) : const Color.fromARGB(255, 227, 47, 34))
+                      : Colors.black,
+                  ),
+                ),
+                
+                Text(
+                  "R\$${stock?.points ?? "Carregando dados"}",
+                  style: GoogleFonts.roboto(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w800,
+                    color: const Color.fromARGB(255, 0, 0, 0),
+                  ),
+                ),
+              ],
+            )
           ),
         ),
       )

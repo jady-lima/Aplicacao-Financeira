@@ -3,7 +3,7 @@ import 'package:aplicacao_financeira/widgets/titles_widgets.dart';
 import 'package:flutter/material.dart';
 
 class FutureBuilderStock{
-  static Widget buildFutureBuilderCurrency(Future<Stock> futureStock){
+  static Widget buildFutureBuilderStocks(Future<Stock> futureStock){
     return FutureBuilder<Stock>(
       future: futureStock, 
       builder: (context, snapshot) {
@@ -22,8 +22,8 @@ class FutureBuilderStock{
           final cac = stock.getByStockName('CAC');
           final nikkei = stock.getByStockName('NIKKEI');
 
-          return Padding(
-            padding: const EdgeInsets.all(10.0),
+          return Container(
+            margin: const EdgeInsets.only(top: 20.0, bottom: 20.0, left: 25, right: 25),
             child: Column(
               children: <Widget>[
                 TitlesWidgets.buildStocksTitles(ibovespa),

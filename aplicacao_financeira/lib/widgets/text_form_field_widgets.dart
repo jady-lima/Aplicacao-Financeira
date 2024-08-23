@@ -7,11 +7,11 @@ class TextFormFieldWidgets{
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: const TextStyle(color: Color.fromARGB(255, 64, 80, 107)),
+        labelStyle: const TextStyle(color: Color.fromARGB(179, 21, 57, 101)),
         border: const OutlineInputBorder(),
         prefixText: prefix,
       ),
-      style: const TextStyle(color: Color.fromARGB(255, 62, 93, 109), fontSize: 25.0),
+      style: const TextStyle(color: Color.fromARGB(179, 21, 57, 101), fontSize: 25.0),
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
     );
   }

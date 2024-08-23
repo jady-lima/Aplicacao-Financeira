@@ -85,15 +85,13 @@ class _ConvertState extends State<Convert>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-
       appBar: AppBar(
         title: const Text(
           "\$ Conversor de Moedas \$",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 69, 142, 201),
+        backgroundColor: const Color.fromARGB(179, 21, 57, 101),
       ),
 
       body: SingleChildScrollView(
